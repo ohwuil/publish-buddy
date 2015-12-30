@@ -1,0 +1,58 @@
+#noDisplay {
+	padding-left: 10px;
+	width: 300px;
+}
+
+body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 100%;
+}
+
+.action {
+	float: left;
+  	width: 700px;
+}
+
+.title {
+	text-align: center;
+	color: white;
+	background-color: #5f5f5f;
+	font-weight: 900;
+	font-size: 200%;
+}
+
+.creative-container { 
+	padding-left: 10px;
+}
+
+.creative_version {
+    float: left;
+	width: 70px;
+}
+
+.row {
+    float: left;
+  	width: 100%;
+}
+
+.status {
+    float: left;
+    width: 100%;
+}
+
+.creative_file_status {
+    float: left;
+    width: 130px;
+}
+
+.creative_link_status {
+    float: left;
+    width: 160px;
+    height: 100%;
+}
+
+.creative {
+    float: left;
+    width: 300px;
+}
+

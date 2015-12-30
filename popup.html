@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Publish Buddy</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="foundation.css">
+    <script scr="js.cookie.min.js"></script>
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="container">
+  		<div class="row title">Publish Buddy</div>
+      <div id="noDisplay">
+        <h2>Sorry! Publish buddy only works on a campaign whitepage</h2>
+        <img src="undisplayable.png" height="250" width="250">
+      </div>
+      <div id="publishInfo">
+        <div>
+          <h3 class="subheader"><div id="campaignInfo"></div></h3>
+        </div>
+  			<div id="actionStatus" class="status">
+  			</div>
+  			<div class="action">
+          <a id="refresh" class="button" href='#'>Refresh</a>
+          <a id="v4_publish" class="button" href="#">V4 publish</a>
+  				<a id="creative_media_publish" class="button" href="#">Creatives To Media</a>
+          <a id="legacy_core_publish" class="button" href="#">Link Creatives</a>
+          <div class="creative-container">
+            <strong><div class='creative'>Creative Name</div>
+            <div class='creative_version'>Version</div>
+            <div class='creative_file_status'>Media</div>
+            <div class='creative_link_status'>Linked</div></strong>
+            <div id="creatives"></div>
+          </div>
+  			</div>
+      </div>
+    </div>
+  </body>
+</html>
+

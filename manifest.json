@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "Publish Buddy",
+  "description": "Whitepage publishing assistance",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "js": ["jquery-2.1.4.min.js", "popup.js"],
+      "matches": [ "http://*/*", "https://*/*"]
+    }],
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup" : "popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "cookies",
+    "https://*.extole.com/",
+    "http://*.extole.com/"
+  ]
+}
