@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   $("#refresh").click(function() {
     renderCreativeInfo();
+    $("#actionStatus").text("");
   });
 
   $("#v4_publish").click(function() {
@@ -75,18 +76,18 @@ document.addEventListener('DOMContentLoaded', function() {
         url: legacyCampaignPublishUrl,
         success: function(data, status) {
           if (status === "success") {
-            console.log("success!");
+            console.log("Succeeded publishing legacy core.");
             $("#actionStatus").show();
             $("#actionStatus").text("Linking Request Sent").css("color", "green");
             $("#actionStatus").fadeOut(2000, function() {
                $("#actionStatus").text("");
             })
           } else {
-            console.log("not modified!");
+            console.log("Failed to publish legacy core.");
           }
         },
         error: function(data) {
-          console.log("Failure! ");
+          console.log("Failed to publish legacy core.");
         }
       });
   });
@@ -99,18 +100,18 @@ document.addEventListener('DOMContentLoaded', function() {
         url: publishUrl + "/" + value + "/publish",
         success: function(data, status) {
           if (status === "success") {
-            console.log("success!");
+            console.log("Succeeded publishing creatives to media!");
             $("#actionStatus").show();
             $("#actionStatus").text("Media Publish Request Sent").css("color", "green");
             $("#actionStatus").fadeOut(2000, function() {
                $("#actionStatus").text("");
             })
           } else {
-            console.log("not modified!");
+            console.log("Failed to published creatives to media.  Url: " + publishUrl);
           }
         },
         error: function(data) {
-          console.log("Failure! ");
+            console.log("Failed to published creatives to media.  Url: " + publishUrl);
         }
       });
     })
@@ -129,6 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
       method: "GET",
       url: campaignDataUrl,
       success: function(data) {
+        console.log("Succeeded getting campaign data from api");
         campaignJson = data;
         $("#campaignInfo").text("Campaign: " + campaignJson.name);
         chrome.cookies.get({url : url, name : "ex_id"}, function(cookie) {
@@ -139,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: "GET",
             url: mediaUrlBase + "/client.json",
             success: function(data) {
+              console.log("Succeeded getting campaign data from client.json file");
               clientJson = data;
               $.each(campaignJson.steps, function(index, step) {
                 $.each(step.mappings, function(index, mapping) {
@@ -159,13 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             },
             error: function(data) {
-              console.log("Failure! ");
+              console.log("Failed to get creatives from client.json file.  Url: " + mediaUrlBase + "/client.json");
             }
           });
         });
       },
       error: function(data) {
-        console.log("Failure! ");
+        console.log("Failed to get campaign data.  Url: " + campaignDataUrl);
       }
     });
   };
@@ -178,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
         callback(data);
       },
       error: function(data) {
-        console.log("Failure fetching campaign info! ");
+        console.log("Failure fetching campaign info.  Url: " + campaignDataUrl);
       }
     });
   };
