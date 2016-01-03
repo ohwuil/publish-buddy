@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         },
         error: function(data) {
-          console.log("Failure! ");
+          console.log("Failed to publish. Url: " + publishUrl);
             $("#actionStatus").text("Failed");
         }
       });
