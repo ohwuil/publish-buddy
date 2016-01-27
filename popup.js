@@ -47,17 +47,19 @@ document.addEventListener('DOMContentLoaded', function() {
   $("#v4_publish").click(function() {
     $("#actionStatus").text("Pending...").css('background-color', 'yellow').css('color');
     getCampaign(function getCampaignSuccess(data) {
-      lastV4PublishedDate = data.published_date;
+      lastV4PublishedDate = data.last_published_date;
       var publishUrl = campaignDataUrl + "/publish";
       $.ajax({
         method: "POST",
         url: publishUrl,
         success: function(data) {
-          if (lastV4PublishedDate < data.published_date) {
-            lastV4PublishedDate = data.published_date;
+          if (lastV4PublishedDate < data.last_published_date) {
+            lastV4PublishedDate = data.last_published_date;
             $("#actionStatus").text("Success").css('background-color', 'green').css('color', 'white');
             $("#actionStatus").fadeOut('slow', function() {
               $("#actionStatus").text("");
+              $("#actionStatus").show();
+              $("#actionStatus").css('color', 'black');
             })
             renderCreativeInfo();
           }
